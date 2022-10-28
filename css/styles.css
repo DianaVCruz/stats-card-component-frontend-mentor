@@ -6,26 +6,27 @@ body{
 .card{
   max-width: 20rem;
   margin: 4rem auto;
-  border-radius: .4rem;
+  border-radius: 1rem;
   overflow: hidden;
-  background: var(--color2);
   display: grid;
   grid-template-columns: 1fr;
+  box-shadow:.75rem .75rem 12.5rem 1.25rem rgb(203 12 153 / 22%);
+  background:linear-gradient(to top,hsla(246,38%,16%,.3) 20%,rgb(70,39,98,.5) 90%);
+  transition:.5s ease;
 }
-.container__card-img{
-  position: relative;
+.card:hover{
+  box-shadow:.75rem .75rem 12.5rem 1.25rem rgb(203 12 153 / 40%);
+  transform:scale(1.02);
+  transition:.5s ease;
+}
+.container__card--img{
+  background: linear-gradient(320deg, #ff61f3 0, #b86ffb 100%);
 }
 .card__img{
-  filter: contrast(1.5);
-}
-.card__filter{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color3);
-  opacity: .4;
+  overflow: hidden;
+  mix-blend-mode: multiply;
+  opacity: .85;
+  transition: .3s ease-in-out;
 }
 .card__content{
   padding: 2rem 1.5rem;
@@ -36,10 +37,21 @@ body{
   font-family: var(--tipo-secundaria);
   font-weight: 700;
   line-height: 1.9rem;
+  background: linear-gradient(100deg,#fbf9fb 0,#d3abd6 50.92%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .content__title--span{
-  color: var(--color3);
+  /* color: var(--color3); */
+  background-image:linear-gradient(to right,#af5ec3,#ef45b4,#fa747d,#f7a0cf,#ef45b4,#af5ec3);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:move 5s linear infinite;
+  animation-delay:5s
 }
+
+@keyframes move{to{background-position:300% center}}
 .content__p{
   font-size: .9rem;
   color: var(--transparent-white-p-main);
@@ -64,7 +76,6 @@ body{
   font-size: .8rem;
   color: var(--transparent-white-stat-h);
 }
-
 
 /* Section atribution*/
 .attribution{
@@ -106,8 +117,18 @@ body{
 .attribution:hover{
   width: 19rem;
   border-radius: 50px;
+  box-shadow:0rem 0rem 1rem .1rem rgb(203 12 153 / 40%);
+  transition:.5s ease;
 }
 .attribution:hover .text{opacity: 1;}  
+
+.card,.content__p,.data__item,.content__title,.attribution{
+  animation:zoomIn .7s ease-out
+}
+@keyframes zoomIn{
+  0%{transform:scale(0); opacity:0}
+  100%{transform:scale(1); opacity:1}
+}
 
 @media screen and (min-width:500px) {
   .card{
